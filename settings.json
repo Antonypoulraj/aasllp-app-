@@ -1,0 +1,23 @@
+{
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "tailwindCSS.experimental.configFile": "./tailwind.config.ts",
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
+    "typescript": "javascript",
+    "typescriptreact": "html"
+  },
+  "css.validate": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.associations": {
+    "*.css": "css",
+    "*.tsx": "typescriptreact"
+  },
+  "json.schemas": [],
+  "json.validate.enable": false
+}
