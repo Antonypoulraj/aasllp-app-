@@ -43,5 +43,3 @@ const AddRawMaterialHeader: React.FC<AddRawMaterialHeaderProps> = ({ isEdit }) =
 };
 
 export default AddRawMaterialHeader;
-
-'export{}'

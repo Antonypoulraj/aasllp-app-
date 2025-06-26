@@ -1,18 +1,49 @@
-{
- "compilerOptions": {
-   "baseUrl": "./src",
+// {
+//  "compilerOptions": {
+//    "baseUrl": "./src",
    
-   "paths": {
-    "@/*": ["*"]
-    //"compilerOptions": {
- //     "jsx": "react-jsx",
-  //  "moduleResolution": "node",
-  //  "resolveJsonModule": true,
-   //"esModuleInterop": true
-  
+//    "paths": {
+//     "@/*": ["*"]
+//     //"compilerOptions": {
+//  //     "jsx": "react-jsx",
+//   //  "moduleResolution": "node",
+//   //  "resolveJsonModule": true,
+//    //"esModuleInterop": true
+//   // "compilerOptions": {
+//   //   "baseUrl": ".",
+//   //   "paths": {
+//   //     "@/*": ["src/*"]
+//   //   }
 
 
 
+//     },
+//     "allowJs": true,
+//     "skipLibCheck": true,
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true,
+//     "strict": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "noFallthroughCasesInSwitch": true,
+//     "module": "esnext",
+//     "moduleResolution": "node",
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "noEmit": true,
+//     "jsx": "react-jsx"
+
+//   },
+
+//   "include": [
+//     "src"
+//   ]
+// }                                         
+
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -27,10 +58,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
-
   },
-
-  "include": [
-    "src"
-  ]
-}                                         
+  "include": ["src"]
+}

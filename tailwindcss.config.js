@@ -102,3 +102,4 @@ module.exports = {
     require('tailwindcss-animate'),
   ],
 };
+export {};

@@ -1,4 +1,6 @@
+ 
 import { Toaster } from "@/components/ui/toaster";
+
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -30,134 +32,140 @@ const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route 
-        path="/" 
-        element={user ? <Navigate to="/dashboard" replace /> : <Navigate to="/login" replace />} 
+      <Route
+        path="/"
+        element={
+          user ? (
+            <Navigate to="/dashboard" replace />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
       />
       <Route path="/login" element={<Login />} />
       <Route path="/create-account" element={<CreateAccount />} />
       <Route path="/verification-mail" element={<VerificationMail />} />
-      <Route 
-        path="/dashboard" 
+      <Route
+        path="/dashboard"
         element={
           <ProtectedRoute>
             <Dashboard />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/analytics" 
+      <Route
+        path="/analytics"
         element={
           <ProtectedRoute>
             <Analytics />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/employee" 
+      <Route
+        path="/employee"
         element={
           <ProtectedRoute>
             <EmployeePortal />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/employee/add" 
+      <Route
+        path="/employee/add"
         element={
           <ProtectedRoute>
             <AddEmployee />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/attendance" 
+      <Route
+        path="/attendance"
         element={
           <ProtectedRoute>
             <AttendancePortal />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/attendance/add" 
+      <Route
+        path="/attendance/add"
         element={
           <ProtectedRoute>
             <AddAttendance />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/toolstocks" 
+      <Route
+        path="/toolstocks"
         element={
           <ProtectedRoute>
             <ToolStocksPortal />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/toolstocks/add" 
+      <Route
+        path="/toolstocks/add"
         element={
           <ProtectedRoute>
             <AddToolStock />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/toolstocks/edit/:id" 
+      <Route
+        path="/toolstocks/edit/:id"
         element={
           <ProtectedRoute>
             <AddToolStock />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/rawmaterials" 
+      <Route
+        path="/rawmaterials"
         element={
           <ProtectedRoute>
             <RawMaterialsPortal />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/rawmaterials/add" 
+      <Route
+        path="/rawmaterials/add"
         element={
           <ProtectedRoute>
             <AddRawMaterial />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/rawmaterials/edit/:id" 
+      <Route
+        path="/rawmaterials/edit/:id"
         element={
           <ProtectedRoute>
             <AddRawMaterial />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/production" 
+      <Route
+        path="/production"
         element={
           <ProtectedRoute>
             <ProductionPortal />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/production/add" 
+      <Route
+        path="/production/add"
         element={
           <ProtectedRoute>
             <AddProductionRecord />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/production/edit/:id" 
+      <Route
+        path="/production/edit/:id"
         element={
           <ProtectedRoute>
             <AddProductionRecord />
           </ProtectedRoute>
-        } 
+        }
       />
-      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+      {/* Catch-all route */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
@@ -180,6 +188,3 @@ const App = () => (
 );
 
 export default App;
-
-
-'export{}'
