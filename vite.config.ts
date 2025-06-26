@@ -47,6 +47,7 @@ export default defineConfig({
     
   },
   server: {
+    port:5173,
     open: true, // 👈 This line auto-opens the browser
   },
 });
