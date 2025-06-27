@@ -1,9 +1,9 @@
-// tailwind.config.js
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   darkMode: ['class'],
   content: [
+    './index.html', // ✅ required for Tailwind to scan your root HTML
     './src/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -100,6 +100,13 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-animate'),
+    // ✅ Custom utility plugin for border-border
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.border-border': {
+          borderColor: 'hsl(var(--border))',
+        },
+      });
+    }),
   ],
 };
-export {};
