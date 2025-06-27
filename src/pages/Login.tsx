@@ -13,48 +13,46 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
   const { login } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!username || !password) {
       toast({
         title: "Login Failed",
-        description: "Please fill in all fields",
+        description: "Please fill in all fields.",
         variant: "destructive",
       });
       return;
     }
 
     setIsLoading(true);
-    
+
     try {
       const success = await login(username, password);
-      
       if (success) {
         toast({
           title: "Login Successful",
-          description: "Welcome to AERO AUTOSPACE LLP",
+          description: `Welcome ${username}`,
         });
-        
-        // Auto-close toast after 3 seconds and navigate
         setTimeout(() => {
           navigate('/dashboard');
         }, 1000);
       } else {
         toast({
           title: "Login Failed",
-          description: "Invalid username or password",
+          description: "Invalid username or password.",
           variant: "destructive",
         });
       }
-    } catch (error) {
+    } catch {
       toast({
         title: "Login Failed",
-        description: "An error occurred during login",
+        description: "Something went wrong. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -62,109 +60,90 @@ const Login = () => {
     }
   };
 
-  const handleForgotPassword = () => {
-    navigate('/verification-mail');
-  };
-
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white flex items-center justify-center px-4">
       <div className="w-full max-w-md">
-        {/* Company Name */}
-        <div className="text-center mb-6 md:mb-8">
-          <h1 className="font-times text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">
-            AERO AUTOSPACE LLP
-          </h1>
-          <div className="w-16 h-16 md:w-24 md:h-24 bg-gray-200 rounded-full mx-auto mb-4 md:mb-6 flex items-center justify-center">
-            <span className="text-lg md:text-2xl font-times font-bold text-gray-600">LOGO</span>
+        {/* Logo & Title */}
+        <div className="text-center mb-6">
+          <h1 className="text-3xl font-bold font-times text-gray-800">AERO AUTOSPACE LLP</h1>
+          <div className="w-20 h-20 bg-gray-100 rounded-full mx-auto my-4 flex items-center justify-center text-xl text-gray-600 font-semibold font-times">
+            LOGO
           </div>
         </div>
 
-        {/* Login Form */}
-        <Card className="shadow-lg">
-          <CardHeader className="text-center pb-4 md:pb-6">
-            <h2 className="font-times text-xl md:text-2xl font-bold">Login</h2>
+        {/* Login Card */}
+        <Card className="shadow-md">
+          <CardHeader className="text-center pb-4">
+            <h2 className="text-xl font-bold font-times">Login</h2>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-              <div className="space-y-1 md:space-y-2">
-                <Label htmlFor="username" className="font-times text-sm md:text-lg">
-                  Username
-                </Label>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Username */}
+              <div>
+                <Label htmlFor="username" className="text-sm font-times">Username</Label>
                 <Input
                   id="username"
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  maxLength={20}
-                  className="font-times text-sm md:text-base h-10 md:h-auto"
                   placeholder="Enter username"
+                  maxLength={20}
+                  className="mt-1"
                 />
               </div>
 
-              <div className="space-y-1 md:space-y-2">
-                <Label htmlFor="password" className="font-times text-sm md:text-lg">
-                  Password
-                </Label>
+              {/* Password */}
+              <div>
+                <Label htmlFor="password" className="text-sm font-times">Password</Label>
                 <div className="relative">
                   <Input
                     id="password"
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    maxLength={20}
-                    className="font-times text-sm md:text-base pr-10 h-10 md:h-auto"
                     placeholder="Enter password"
+                    maxLength={20}
+                    className="pr-10 mt-1"
                   />
                   <Button
                     type="button"
+                    size="icon"
                     variant="ghost"
-                    size="sm"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
                     onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-2 top-2"
+                    aria-label="Toggle password visibility"
                   >
-                    {showPassword ? (
-                      <EyeOff className="h-3 w-3 md:h-4 md:w-4" />
-                    ) : (
-                      <Eye className="h-3 w-3 md:h-4 md:w-4" />
-                    )}
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </Button>
                 </div>
               </div>
 
-              <div className="flex justify-center pt-2 md:pt-4">
-                <Button
-                  type="submit"
-                  className="font-times text-sm md:text-lg py-2 md:py-3 px-8 md:px-12 bg-blue-600 hover:bg-blue-700 text-white"
-                  disabled={isLoading}
-                >
-                  {isLoading ? 'Logging in...' : 'Login'}
-                </Button>
-              </div>
+              {/* Submit */}
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-times"
+              >
+                {isLoading ? 'Logging in...' : 'Login'}
+              </Button>
 
-              <div className="flex justify-between text-xs md:text-sm pt-2">
-                <button
-                  type="button"
-                  className="font-times text-blue-600 hover:underline"
-                  onClick={handleForgotPassword}
-                >
+              {/* Links */}
+              <div className="flex justify-between text-sm text-blue-600 pt-2">
+                <button type="button" onClick={() => navigate('/verification-mail')} className="hover:underline">
                   Forgot Password?
                 </button>
-                <button
-                  type="button"
-                  className="font-times text-blue-600 hover:underline"
-                  onClick={() => navigate('/create-account')}
-                >
+                <button type="button" onClick={() => navigate('/create-account')} className="hover:underline">
                   Create Account
                 </button>
               </div>
-            </form>
 
-            {/* Demo Credentials */}
-            <div className="mt-4 md:mt-6 p-3 md:p-4 bg-gray-50 rounded-lg">
-              <p className="font-times text-xs md:text-sm text-gray-600 mb-2">Demo Credentials:</p>
-              <p className="font-times text-xs text-gray-500">Admin: admin / admin123</p>
-              <p className="font-times text-xs text-gray-500">Guest: guest / guest123</p>
-            </div>
+              {/* Demo Credentials */}
+              <div className="mt-5 bg-gray-50 p-3 rounded-lg text-xs text-gray-600 font-times">
+                <p className="mb-1">Demo Credentials:</p>
+                <p>Admin: <code>admin / admin123</code></p>
+                <p>Guest: <code>guest / guest123</code></p>
+              </div>
+            </form>
           </CardContent>
         </Card>
       </div>
