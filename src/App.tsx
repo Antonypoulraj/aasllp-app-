@@ -1,6 +1,4 @@
- 
-import { Toaster } from "@/components/ui/toaster";
-
+ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -8,6 +6,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { DataProvider } from "./contexts/DataContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+
+// Pages
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Analytics from "./pages/Analytics";
@@ -27,19 +27,24 @@ import VerificationMail from "./pages/VerificationMail";
 
 const queryClient = new QueryClient();
 
+// Optional: You can extract this as a separate component
 const AppRoutes = () => {
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div style={{ height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <h2>Loading...</h2>
+      </div>
+    );
+  }
 
   return (
     <Routes>
       <Route
         path="/"
         element={
-          user ? (
-            <Navigate to="/dashboard" replace />
-          ) : (
-            <Navigate to="/login" replace />
-          )
+          user ? <Navigate to="/dashboard" replace /> : <Navigate to="/login" replace />
         }
       />
       <Route path="/login" element={<Login />} />
