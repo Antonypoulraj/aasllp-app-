@@ -67,23 +67,25 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-white px-4 py-8">
+    <div className="min-h-screen flex items-center justify-center bg-[#fbfaf7] px-4 py-8">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="font-times text-3xl font-bold text-gray-800 mb-2">AERO AUTOSPACE LLP</h1>
-          <div className="w-20 h-20 bg-blue-200 rounded-full mx-auto flex items-center justify-center">
-            <span className="text-lg font-bold text-blue-800">LOGO</span>
+          <h1 className="font-times text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            AERO AUTOSPACE LLP
+          </h1>
+          <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto flex items-center justify-center shadow-inner">
+            <span className="text-lg font-times font-bold text-gray-700">LOGO</span>
           </div>
         </div>
 
-        <Card className="shadow-xl border border-gray-200">
-          <CardHeader className="text-center pb-4">
-            <h2 className="font-times text-xl font-semibold text-gray-700">Login</h2>
+        <Card className="shadow-md border border-gray-200">
+          <CardHeader className="text-center pb-2">
+            <h2 className="font-times text-xl font-semibold text-gray-900">Login</h2>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <Label htmlFor="username" className="font-times text-sm text-gray-700">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-1">
+                <Label htmlFor="username" className="font-times text-sm text-gray-800">
                   Username
                 </Label>
                 <Input
@@ -93,12 +95,12 @@ const Login = () => {
                   onChange={(e) => setUsername(e.target.value)}
                   maxLength={20}
                   placeholder="Enter username"
-                  className="mt-1"
+                  className="text-sm"
                 />
               </div>
 
-              <div>
-                <Label htmlFor="password" className="font-times text-sm text-gray-700">
+              <div className="space-y-1">
+                <Label htmlFor="password" className="font-times text-sm text-gray-800">
                   Password
                 </Label>
                 <div className="relative">
@@ -109,7 +111,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     maxLength={20}
                     placeholder="Enter password"
-                    className="pr-10 mt-1"
+                    className="pr-10 text-sm"
                   />
                   <Button
                     type="button"
@@ -125,23 +127,23 @@ const Login = () => {
 
               <Button
                 type="submit"
-                className="w-full font-times text-sm py-2 bg-blue-600 hover:bg-blue-700 text-white"
+                className="w-full font-times text-sm py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
                 disabled={isLoading}
               >
                 {isLoading ? 'Logging in...' : 'Login'}
               </Button>
 
-              <div className="flex justify-between text-xs pt-2">
+              <div className="flex justify-between text-xs pt-1">
                 <button
                   type="button"
-                  className="font-times text-blue-600 hover:underline"
+                  className="font-times text-blue-700 hover:underline"
                   onClick={handleForgotPassword}
                 >
                   Forgot Password?
                 </button>
                 <button
                   type="button"
-                  className="font-times text-blue-600 hover:underline"
+                  className="font-times text-blue-700 hover:underline"
                   onClick={() => navigate('/create-account')}
                 >
                   Create Account
@@ -149,10 +151,14 @@ const Login = () => {
               </div>
             </form>
 
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
-              <p className="font-times text-xs text-gray-600 mb-2">Demo Credentials:</p>
-              <p className="font-times text-xs text-gray-500">Admin: admin / admin123</p>
-              <p className="font-times text-xs text-gray-500">Guest: guest / guest123</p>
+            <div className="mt-5 p-3 bg-gray-100 rounded-md border border-gray-300">
+              <p className="font-times text-xs text-gray-800 mb-1 font-semibold">Demo Credentials:</p>
+              <p className="font-times text-xs text-gray-700">
+                <span className="font-semibold">Admin:</span> admin / admin123
+              </p>
+              <p className="font-times text-xs text-gray-700">
+                <span className="font-semibold">Guest:</span> guest / guest123
+              </p>
             </div>
           </CardContent>
         </Card>
