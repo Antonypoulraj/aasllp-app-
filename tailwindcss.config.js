@@ -3,11 +3,8 @@ const plugin = require('tailwindcss/plugin');
 module.exports = {
   darkMode: ['class'],
   content: [
-    './index.html', // ✅ required for Tailwind to scan your root HTML
+    './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     container: {
@@ -81,14 +78,8 @@ module.exports = {
           to: { height: '0' },
         },
         'fade-in': {
-          '0%': {
-            opacity: '0',
-            transform: 'translateY(10px)',
-          },
-          '100%': {
-            opacity: '1',
-            transform: 'translateY(0)',
-          },
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
       animation: {
@@ -100,7 +91,6 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-animate'),
-    // ✅ Custom utility plugin for border-border
     plugin(function ({ addUtilities }) {
       addUtilities({
         '.border-border': {
