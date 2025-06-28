@@ -67,23 +67,25 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#fbfaf7] px-4 py-8">
+    <div
+      className="min-h-screen flex items-center justify-center px-4 py-12 bg-gradient-to-br from-white via-blue-50 to-blue-100"
+    >
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <h1 className="font-times text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-10">
+          <h1 className="font-times text-4xl font-bold text-gray-900 mb-4">
             AERO AUTOSPACE LLP
           </h1>
-          <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto flex items-center justify-center shadow-inner">
+          <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto flex items-center justify-center shadow-inner">
             <span className="text-lg font-times font-bold text-gray-700">LOGO</span>
           </div>
         </div>
 
-        <Card className="shadow-md border border-gray-200">
-          <CardHeader className="text-center pb-2">
-            <h2 className="font-times text-xl font-semibold text-gray-900">Login</h2>
+        <Card className="shadow-lg border border-gray-200 rounded-xl">
+          <CardHeader className="text-center pb-4">
+            <h2 className="font-times text-2xl font-semibold text-gray-900">Login</h2>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-1">
                 <Label htmlFor="username" className="font-times text-sm text-gray-800">
                   Username
@@ -133,7 +135,7 @@ const Login = () => {
                 {isLoading ? 'Logging in...' : 'Login'}
               </Button>
 
-              <div className="flex justify-between text-xs pt-1">
+              <div className="flex justify-between text-xs pt-2">
                 <button
                   type="button"
                   className="font-times text-blue-700 hover:underline"
@@ -151,7 +153,7 @@ const Login = () => {
               </div>
             </form>
 
-            <div className="mt-5 p-3 bg-gray-100 rounded-md border border-gray-300">
+            <div className="mt-6 p-4 bg-gray-100 rounded-lg border border-gray-300">
               <p className="font-times text-xs text-gray-800 mb-1 font-semibold">Demo Credentials:</p>
               <p className="font-times text-xs text-gray-700">
                 <span className="font-semibold">Admin:</span> admin / admin123
