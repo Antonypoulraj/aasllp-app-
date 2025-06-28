@@ -67,26 +67,22 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 via-white to-blue-50 text-gray-800 px-4 py-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-white px-4 py-8">
       <div className="w-full max-w-md">
-        {/* Company Branding */}
         <div className="text-center mb-8">
-          <h1 className="font-times text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            AERO AUTOSPACE LLP
-          </h1>
-          <div className="w-20 h-20 bg-blue-100 rounded-full mx-auto flex items-center justify-center shadow-inner">
-            <span className="text-xl font-times font-bold text-blue-600">LOGO</span>
+          <h1 className="font-times text-3xl font-bold text-gray-800 mb-2">AERO AUTOSPACE LLP</h1>
+          <div className="w-20 h-20 bg-blue-200 rounded-full mx-auto flex items-center justify-center">
+            <span className="text-lg font-bold text-blue-800">LOGO</span>
           </div>
         </div>
 
-        {/* Login Card */}
-        <Card className="shadow-2xl border border-gray-200">
+        <Card className="shadow-xl border border-gray-200">
           <CardHeader className="text-center pb-4">
-            <h2 className="font-times text-xl font-semibold text-gray-800">Login</h2>
+            <h2 className="font-times text-xl font-semibold text-gray-700">Login</h2>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
                 <Label htmlFor="username" className="font-times text-sm text-gray-700">
                   Username
                 </Label>
@@ -97,11 +93,11 @@ const Login = () => {
                   onChange={(e) => setUsername(e.target.value)}
                   maxLength={20}
                   placeholder="Enter username"
-                  className="font-times text-sm"
+                  className="mt-1"
                 />
               </div>
 
-              <div className="space-y-2">
+              <div>
                 <Label htmlFor="password" className="font-times text-sm text-gray-700">
                   Password
                 </Label>
@@ -113,7 +109,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     maxLength={20}
                     placeholder="Enter password"
-                    className="font-times text-sm pr-10"
+                    className="pr-10 mt-1"
                   />
                   <Button
                     type="button"
