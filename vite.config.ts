@@ -17,9 +17,11 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
-  // 👇 This tells Vite to fallback to index.html for unknown routes
-  
-});
+  // ✅ Fallback to index.html for all non-static routes (needed for React Router)
+  preview: {
+    
+  }
+})
 
 // import { defineConfig } from 'vite';
 // import react from '@vitejs/plugin-react';
