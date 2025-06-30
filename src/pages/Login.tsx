@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -6,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from "sonner"; // ✅ Correct toast import
 import { Eye, EyeOff } from 'lucide-react';
 
 const Login = () => {
@@ -16,17 +15,12 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
-  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!username || !password) {
-      toast({
-        title: 'Login Failed',
-        description: 'Please fill in all fields',
-        variant: 'destructive',
-      });
+      toast.error('Please fill in all fields');
       return;
     }
 
@@ -36,27 +30,16 @@ const Login = () => {
       const success = await login(username, password);
 
       if (success) {
-        toast({
-          title: 'Login Successful',
-          description: 'Welcome to AERO AUTOSPACE LLP',
-        });
+        toast.success('Welcome to AERO AUTOSPACE LLP');
 
         setTimeout(() => {
           navigate('/dashboard');
         }, 1000);
       } else {
-        toast({
-          title: 'Login Failed',
-          description: 'Invalid username or password',
-          variant: 'destructive',
-        });
+        toast.error('Invalid username or password');
       }
     } catch (error) {
-      toast({
-        title: 'Login Failed',
-        description: 'An error occurred during login',
-        variant: 'destructive',
-      });
+      toast.error('An error occurred during login');
     } finally {
       setIsLoading(false);
     }
@@ -67,9 +50,7 @@ const Login = () => {
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-4 py-12 bg-gradient-to-br from-white via-blue-50 to-blue-100"
-    >
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-gradient-to-br from-white via-blue-50 to-blue-100">
       <div className="w-full max-w-md">
         <div className="text-center mb-10">
           <h1 className="font-times text-4xl font-bold text-gray-900 mb-4">
