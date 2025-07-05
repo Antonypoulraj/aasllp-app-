@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model employeedetails_tb {
+  id          Int    @id
+  Name        String @db.VarChar(45)
+  Email       String @unique(map: "Email_UNIQUE") @db.VarChar(45)
+  Departrment String @db.VarChar(45)
+  Position    String @db.VarChar(45)
+  Phone       String @unique(map: "Phone_UNIQUE") @db.VarChar(45)
+  Status      String @db.VarChar(45)
+}
+
+model attendancedetails_tb {
+  id             Int      @id @unique(map: "id_UNIQUE")
+  Employee_Name  String   @map("Employee Name") @db.VarChar(45)
+  Employee_ID    String   @unique(map: "Employee ID_UNIQUE") @map("Employee ID") @db.VarChar(45)
+  Date           DateTime @db.Date
+  Check_In_Time  DateTime @map("Check In Time") @db.DateTime(0)
+  Check_Out_TIme DateTime @map("Check Out TIme") @db.DateTime(0)
+  Status         String   @db.VarChar(45)
+}
+
+model leavemanagement_tb {
+  id               Int      @id @unique(map: "id_UNIQUE")
+  Employee_Name    String   @map("Employee Name") @db.VarChar(45)
+  Employee_ID      String   @unique(map: "Employee ID_UNIQUE") @map("Employee ID") @db.VarChar(45)
+  Leave_Type       String   @map("Leave Type") @db.VarChar(45)
+  Start_Date       DateTime @map("Start Date") @db.Date
+  End_Date         DateTime @map("End Date") @db.Date
+  Reason           String   @db.VarChar(45)
+  Manager_Email_ID String   @map("Manager Email ID") @db.VarChar(45)
+  Status           String   @db.VarChar(45)
+}
+
+model tooldetails_tb {
+  id            Int    @id @unique(map: "id_UNIQUE")
+  Tool_Name     String @map("Tool Name") @db.VarChar(45)
+  Tool_ID       String @unique(map: "Tool ID_UNIQUE") @map("Tool ID") @db.VarChar(45)
+  Category      String @db.VarChar(45)
+  Quantity      Int
+  Location      String @db.VarChar(45)
+  Status        String @db.VarChar(45)
+  Minimum_Stock Int    @map("Minimum Stock")
+  Maximum_Stock Int    @map("Maximum Stock")
+  Supplier      String @db.VarChar(45)
+}
+
+model rawmaterialdetails_db {
+  id             Int    @id @unique(map: "id_UNIQUE")
+  Marterial_Name String @map("Marterial Name") @db.VarChar(45)
+  Maerial_Grade  String @map("Maerial Grade") @db.VarChar(45)
+  Category       String @db.VarChar(45)
+  Quantity       Int
+  Supplier       String @db.VarChar(45)
+  Status         String @db.VarChar(45)
+  Length         String @db.VarChar(45)
+  Weight         String @db.VarChar(45)
+}
+
+model productionsdetails_tb {
+  id                       Int      @id @unique(map: "id_UNIQUE")
+  Date                     DateTime @db.Date
+  Shift                    String   @db.VarChar(45)
+  Project_Name             String   @map("Project Name") @db.VarChar(45)
+  Component_Name           String   @map("Component Name") @db.VarChar(45)
+  Total_Machined_Quantity  String   @map("Total Machined Quantity") @db.VarChar(45)
+  Total_Finished_Quantity  String   @map("Total Finished Quantity") @db.VarChar(45)
+  Total_Rejection_Quantity String   @map("Total Rejection Quantity") @db.VarChar(45)
+  Rejection_Reason         String   @map("Rejection Reason") @db.VarChar(45)
+  Operator_Name            String   @map("Operator Name") @db.VarChar(45)
+}
